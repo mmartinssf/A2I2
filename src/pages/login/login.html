@@ -1,0 +1,24 @@
+<ion-header color="primary">
+  <ion-navbar color="primary">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form #loginForm="ngForm" (ngSubmit)="Login(loginForm)">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <!--[(ngModel)]="user.email" sameAs ng-model="user.email"-->
+      <ion-input name="email" type="email" placeholder="john@doe.com" [(ngModel)]="user.email" required></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input name="password" type="password" placeholder="********" [(ngModel)]="user.password" required></ion-input>
+    </ion-item>
+    <button ion-button type="submit" class="button-block">
+      Log In
+    </button>
+  </form>
+</ion-content>
