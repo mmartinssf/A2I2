@@ -1,22 +1,38 @@
+import { OnInit } from 'angular2/core';
+import { NavController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { SSFUserService } from '../../providers/ssfUserService';
+import { Result } from '../result/result';
+import { QuestionService } from '../../providers/question-service';
 
-/*
-  Generated class for the Questions page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
-  selector: 'page-questions',
-  templateUrl: 'questions.html'
+    selector: 'page-questions',
+    templateUrl: 'questions.html'
 })
+
 export class Questions {
+    
+    id = undefined
+    questions = undefined
+    total = undefined
+    token = undefined
+    userID = undefined
 
-  constructor(public navCtrl: NavController) {}
+    constructor(
+    public navCtrl: NavController,
+    public userService: SSFUserService,
+    public navParams: NavParams,
+    public qService: QuestionService) {}
 
-  ionViewDidLoad() {
-    console.log('Hello QuestionsPage Page');
-  }
+    ionViewDidLoad() {
+        console.log('Hello Question Page');
+    }
 
-}
+    ngOnInit() {
+        this.userService.userResults(this.token)
+        .subscribe(data => this.questions = data
+        );
+    }
+
+
+}    

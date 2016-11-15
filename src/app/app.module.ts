@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { ChartModule } from 'ng2-chartjs2';
+import { Storage } from '@ionic/storage';
 
 //States
 import { HomePage } from '../pages/home/home';
@@ -12,6 +14,7 @@ import { Results } from '../pages/results/results';
 
 //Services
 import { SSFUserService } from '../providers/ssfUserService';
+import { answerService } from '../providers/answer-service';
 import { Observable } from 'rxjs/Rx';
 
 
@@ -27,7 +30,8 @@ import { Observable } from 'rxjs/Rx';
   ],
   
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ChartModule
   ],
   
   bootstrap: [IonicApp],
@@ -41,7 +45,7 @@ import { Observable } from 'rxjs/Rx';
     Results
   ],
   
-  providers: [SSFUserService]
+  providers: [SSFUserService, answerService, Storage]
   
 })
 
